@@ -1,0 +1,166 @@
+<html>
+{% load static %}
+<head>
+       
+        
+ 
+        
+
+    <!-- Bootstrap -->
+    <link href="{% static 'GestionAcademicaWebApp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+     <!-- Fonts -->
+    
+     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
+     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+     
+
+    <!-- Styles -->
+    <link href="{% static 'GestionAcademicaWebApp/css/gestion.css' %}" rel="stylesheet">
+
+
+
+</head>
+
+<body >
+  
+
+    <!---  NAVBAR--->
+    
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light">
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'Home' %}">Inicio<span class="sr-only"> </span></a>
+                </li>
+                <li class="nav-item dropdown active">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Modulos
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'Aspirantes' %}">Aspirantes</a>
+                    <a class="dropdown-item" href="{% url 'Investigadores' %}">Investigador</a>
+                    <a class="dropdown-item" href="{% url 'Estudiantes' %}">Estudiantes</a>
+                    <a class="dropdown-item" href="{% url 'Egresados' %}">Egresados</a>
+                    
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'Admins' %}">Administrador</a>
+                  </div>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'Contacto' %}">Contacto<span class="sr-only">(current)</span></a>
+                  </li>
+              </ul>
+                
+                <a href="{% url 'Home' %}"> 
+                    <h4><span class="dark" aria-hidden="true" style="color: antiquewhite;">{{user.username}} </span></h4>
+                </a>
+              <p> 
+                
+              </p>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+              </form>
+            </div>
+          </nav>
+
+          {% if messages %}
+          {% for message in messages %}
+            <div class="notification {{messages.tag}}" style="color: rgb(235, 91, 8);">
+              {{message}}
+            </div>
+          {% endfor %}
+        {% endif %}
+
+          
+        
+            
+            
+            
+    <!-- CONTENIDO QUE CAMBIA-->
+     
+      {% block content %}
+
+      {% endblock %}
+
+     
+          
+
+
+    <!-- Footer -->
+    
+<footer class="page-footer font-small blue pt-4" >
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+  
+      <!-- Grid row -->
+      <div class="row">
+  
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+  
+          <!-- Content -->
+          <h5 class="text-uppercase"><strong>Para mas informacion contactar a:</strong> </h5>
+          <p>Jorge Hdz</p>
+          <p> hernandez.jorge@uadec.edu.mx </p>
+  
+        </div>
+        <!-- Grid column -->
+  
+        <hr class="clearfix w-100 d-md-none pb-3">
+  
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+  
+          <!-- Links -->
+          <h5 class="text-uppercase"><strong>Redes sociales</strong></h5>
+  
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">Link 1</a>
+            </li>
+          </ul>
+  
+        </div>
+        <!-- Grid column -->
+  
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+  
+          <!-- Links -->
+          <h5 class="text-uppercase"><strong>Teléfonos</strong></h5>
+  
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">Link 1</a>
+            </li>
+          </ul>
+  
+        </div>
+        <!-- Grid column -->
+  
+      </div>
+      <!-- Grid row -->
+  
+    </div>
+    <!-- Footer Links -->
+  
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+      <a href="https://mdbootstrap.com/"> CIMADMIN.com</a>
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+  <!-- Footer -->
+
+    <!-- Bootstrap -->
+    <script src="{% static 'GestionAcademicaWebApp/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'GestionAcademicaWebApp/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+
+</html>

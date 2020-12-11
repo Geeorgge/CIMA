@@ -1,0 +1,134 @@
+body {
+  font-family: 'Lora';
+  background: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url("../img/backnd.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+.lead{
+  font-size: 25px;
+}
+
+.ul{
+  color: #ffffff;
+  
+}
+ 
+.container, a{
+  font-size: 25px;
+  
+  color: #000c0a;
+  font-family: sans-Century Gothic,CenturyGothic,AppleGothic,sans-serif !important;
+}
+ 
+
+.page-footer{
+  height: 29%;
+  width: 100%;
+  position: absolute ;
+   
+  clear: both;
+  background-color: rgb(4, 155, 85);
+}
+  
+
+/*
+JUMBOTRON VERDE CON BORDES
+.jumbotron{
+  font-family:courier,arial,helvética;
+  size: 300px;
+  position: absolute;
+  height:30%; 
+  width:65%;
+  top: 15%;
+  left: 17%;
+  background:  #27ae60;
+  border-radius: 96px; 
+  font-size: 15px;
+  font-weight: bolder;
+}*/
+.jumbotron{
+text-align: center;
+background-color: cadetblue;
+font-weight: bolder;
+font-size: 10px;
+height: 30%;
+width: 95%;
+position: relative;
+ left: 1cm;
+}
+
+
+.container{
+   
+  width:1500px;
+}
+
+.containers{
+  background-color: brown;
+  font-family: sans-serif;
+  height:30%; 
+  width:65%;
+  top: 9%;
+  left: 17%;
+}
+
+.card{
+  
+  background-color: #0076a5;
+  height: 65%;
+  width: 40%;
+  top: 2%;
+  left: 29%; 
+  right: 35%;
+   
+}
+
+.userLogin{
+  text-align:  center;
+  font-weight: bolder;
+}
+
+.cards2{
+  background-color: #0497d1;
+  height: 65%;
+  width: 40%;
+  top: -63%;
+}
+
+.cards3{
+  font-size: 150%;
+  left: 22%;
+  align-items: stretch;
+  background-color: #5ccefc;
+  font-weight: bolder;
+  top: 4%;
+  height: 115%;
+  
+}
+
+.btn-lg{
+  width: 55%;
+  height: 8%;
+  font-size: x-large;
+  font-weight: bold;
+  align-items: center;
+  margin-left: 22%;
+  margin-top: 9%;
+   
+}
+
+
+.formreg{
+size: 120px;
+background-color: #0497d1;
+top: 20%;
+}
+
+.notification{
+  background-color: rgb(17, 235, 100);
+  font-weight: bold;
+  font-size: 150%;
+   text-align: center;
+}

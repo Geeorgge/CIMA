@@ -1,0 +1,14 @@
+{% extends "GestionAcademicaWebApp/base.html" %}
+ 
+        
+
+ 
+{%  block content %}
+    <form class="form formreg" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        
+        <button type="submit" id="submit">Registrarse</button>
+    </form>
+
+{% endblock %}

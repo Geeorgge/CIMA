@@ -1,0 +1,43 @@
+
+{% extends "GestionAcademicaWebApp/base.html" %}
+
+
+{% block content %}
+   
+<div class="card"> 
+
+    <h3 class="card-header info-color white-text text-center py-4" style="background-color:rgb(89, 142, 240);">
+        <strong>Bienvenido</strong>
+    </h3>
+    <!--Card content-->
+    <div class="card-body px-lg-5">
+        <!-- Formulario -->
+         
+        <form class="text-center"  style="font:bolder;" method="POST"> {% csrf_token %} 
+            
+            <h5><p><strong>Inicia sesión para actualizar tu informacion de estudios.</strong></p></h5>
+            <p><a> <strong>Ingresa tus datos</strong></a></p>
+            <!-- E-mail -->
+            <div class="md-form">     
+                {{ formL.email }} 
+            </div>
+            <!-- Contraseña-->
+            <div class="md-form mt-4">
+                {{ formL.password }} 
+            </div>
+            <!-- boton inicar sesion -->
+            <button class="btn btn-dark writebtn my-4" type="submit">Inicia sesión</button>
+            <!-- boton inicar sesion -->  
+            <button class="btn btn-dark writebtn my-4" type="submit">Inicia sesión</button>
+            {{request.POST}}
+        </form>
+        <!-- Form -->
+    </div>
+</div>
+
+            <div class="card-body">
+                <p>  </p>
+                <p> </p>
+                <p>  </p>
+            </div>
+{% endblock %}
