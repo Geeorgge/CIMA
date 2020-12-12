@@ -4,7 +4,7 @@
 
 {% load static %}
 
-{%  block content %}
+{% block content %}
 
 <html>
 
@@ -15,9 +15,9 @@
 
 <body>
 
-    {% if user.is_authenticated == False %}
-     <!-- LOGIN -->
-    <div class="card"> 
+    
+    <!-- LOGIN -->
+    <div class="card">
 
         <h3 class="card-header info-color white-text text-center py-4" style="background-color:rgb(89, 142, 240);">
             <strong>Bienvenido</strong>
@@ -25,70 +25,69 @@
         <!--Card content-->
         <div class="card-body px-lg-5">
             <!-- Formulario -->
-             
-            <form class="text-center"  style="font:bolder;" method="POST" action=""> {% csrf_token %} 
-                
-                <h5><p><strong>Inicia sesión para actualizar tu informacion de estudios.</strong></p></h5>
+
+            <form class="text-center" style="font:bolder;" method="POST" action=""> {% csrf_token %}
+
+                <h5>
+                    <p><strong>Inicia sesión para actualizar tu informacion de estudios.</strong></p>
+                </h5>
                 <p><a> <strong>Ingresa tus datos</strong></a></p>
                 <!-- E-mail -->
-                <div class="md-form">     
-                    {{ formL.email }} 
+                <div class="md-form">
+                    {{ formL }}
+
                 </div>
-                <!-- Contraseña-->
-                <div class="md-form mt-4">
-                    {{ formL.password }} 
-                </div>
-                
-                <!-- boton inicar sesion -->  
+               
+
+                <!-- boton inicar sesion -->
                 <button class="btn btn-dark writebtn my-4" type="submit">Inicia sesión</button>
-                 
+
             </form>
             <!-- Form -->
         </div>
     </div>
-    {% endif %}
     
-
-    {% if user.is_authenticated != False %} 
     <div class="card cards3" style="width: 55%;">
 
         <h3 class="card-header info-color white-text text-center py-4" style="background-color:rgb(15, 103, 235);">
             <strong style="font-weight: bolder;">Registro</strong>
         </h3>
-            <!--Card content-->
+        <!--Card content-->
         <div class="card-body cb px-lg-5">
             <!-- Formulario -->
-            <form  style="font:bolder ;" method="POST" action=""> 
-                {% csrf_token %} 
-                        
-                <h4 style="text-align: center;"><p><strong>Si eres recien egresado, ingresa aqui tu información.</strong></p></h4>
+            <form style="font:bolder ;" method="POST" action="">
+                {% csrf_token %}
+
+                <h4 style="text-align: center;">
+                    <p><strong>Si eres recien egresado, ingresa aqui tu información.</strong></p>
+                </h4>
                 <p><a style="text-align: center;"> <strong>Ingresa tus datos</strong></a></p>
                 <!-- Form inputs -->
                 <div class="md-form" style="display: grid;">
-                    {{miform}}
-                    
+                    {{FormEg}}
+
                 </div>
-                <!-- boton registrar --> 
-                <button type="submit" class="btn btn-secondary btn-dark btn-lg">Registrar</button> 
-                </form>
-                <!-- Form -->
-            </div>
+                <!-- boton registrar -->
+                <button type="submit" class="btn btn-secondary btn-dark btn-lg">Registrar</button>
+            </form>
+            <!-- Form -->
         </div>
     </div>
-    {% endif %}
+    </div>
+  
 
 
 
-<div>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
+    <div>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
 
-</div>
+    </div>
 
 
-   
+
     <!-- Material form subscription -->
 
 </body>
@@ -97,4 +96,4 @@
 </html>
 
 
-{%  endblock  %}
+{% endblock %}

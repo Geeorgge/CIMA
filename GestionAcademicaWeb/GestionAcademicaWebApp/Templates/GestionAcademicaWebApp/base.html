@@ -32,27 +32,27 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="{% url 'Home' %}">Inicio<span class="sr-only"> </span></a>
+                  <a class="nav-link" href="{% url 'home' %}">Inicio<span class="sr-only"> </span></a>
                 </li>
                 <li class="nav-item dropdown active">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Modulos
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'Aspirantes' %}">Aspirantes</a>
-                    <a class="dropdown-item" href="{% url 'Investigadores' %}">Investigador</a>
-                    <a class="dropdown-item" href="{% url 'Estudiantes' %}">Estudiantes</a>
-                    <a class="dropdown-item" href="{% url 'Egresados' %}">Egresados</a>
+                    <a class="dropdown-item" href="{% url 'aspirantes' %}">Aspirantes</a>
+                    <a class="dropdown-item" href="{% url 'investigadores' %}">Investigador</a>
+                    <a class="dropdown-item" href="{% url 'estudiantes' %}">Estudiantes</a>
+                    <a class="dropdown-item" href="{% url 'egresados' %}">Egresados</a>
                     
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{% url 'Admins' %}">Administrador</a>
+                    <a class="dropdown-item" href="{% url 'admins' %}">Administrador</a>
                   </div>
                   <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'Contacto' %}">Contacto<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{% url 'contacto' %}">Contacto<span class="sr-only">(current)</span></a>
                   </li>
               </ul>
                 
-                <a href="{% url 'Home' %}"> 
+                <a href="{% url 'home' %}"> 
                     <h4><span class="dark" aria-hidden="true" style="color: antiquewhite;">{{user.username}} </span></h4>
                 </a>
               <p> 

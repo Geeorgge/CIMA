@@ -14,7 +14,29 @@ from django.views.generic import FormView, CreateView, ListView
 
 # Create your views here.+
 
- 
+def egresados(request):
+    form_login = UserLogin()
+    FormularioEgresados = FormEgresados()
+    if form_login == authenticate:
+        form_login = AuthenticationForm(request, data=request.POST)
+        return render(request, "Egresados/egresados.html", {'miform':FormularioEgresados})
+    else:
+        messages.info(request, f'Contraseña o usuario incorrectos')
+        return render(request, "Egresados/egresados.html", {'formL':form_login})
+
+'''def egresados(request):
+    return render(request, "Egresados/egresados.html")'''
+
+'''
+def egresados(request):
+    context = {}
+    form = UserLogin(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+    context['form'] = form    
+    return render(request, "Egresados/egresados.html", context)
+
+    
 def Egresados(request):
     form_login = UserLogin()
     FormularioEgresados = FormEgresados()
@@ -25,20 +47,21 @@ def Egresados(request):
         messages.info(request, f'Contraseña o usuario incorrectos')
         return render(request, "Egresados/egresados.html", {'formL':form_login})
          
-'''
 def Egresados(request):
     return render(request, "Egresados/egresados.html")
 
+
+ '''
 def formLog(request):
     form_login = UserLogin()
     return render(request, "Egresados/egresados.html", {'formL':form_login})
     
 
-@login_required
+#@login_required
 def FormEg(request):
     FormularioEgresados = FormEgresados()
     return render(request,"Templates/egresados.html",{'FormEg':FormularioEgresados})
-    '''
+   
 
 def logout_request(request):
     logout(request)
@@ -53,7 +76,7 @@ def login_request(request):
         form_login = AuthenticationForm(request, data=request.POST)
         #sí el formulario es valido..
         if form_login.is_valid():
-            form_login.save(commit=False)
+            form_login.save()
             #se recuperan las credenciales validas introducidad en el login
             usuario = form_login.cleaned_data.get('username')
             contraseña = form_login.cleaned_data.get('password')

@@ -8,13 +8,13 @@ from django.views.generic import View
 # Create your views here.
 
 
-class Inicio(View):
+class inicio(View):
     def get(self, request, *args, **kwargs):
 
         return render(request, 'GestionAcademicaWebApp/home.html')
 
 
-def Aspirantes(request):
+def aspirantes(request):
 
 
     return render(request, "GestionAcademicaWebApp/aspirantes.html")
@@ -23,37 +23,37 @@ def Aspirantes(request):
 
 
 
-def Investigadores(request):
+def investigadores(request):
 
 
     return render(request, "GestionAcademicaWebApp/investigadores.html")
 
 
-def Estudiantes(request):
+def estudiantes(request):
 
 
     return render(request, "GestionAcademicaWebApp/estudiantes.html")
 
 
-def Contacto(request):
+def contacto(request):
 
 
     return render(request, "GestionAcademicaWebApp/contacto.html")
 
-def Admins(request):
+def admins(request):
 
 
     return render(request, "GestionAcademicaWebApp/admins.html")
 
-def Login(request):
+def login(request):
 
     return render(request, "GestionAcademicaWebApp/login.html")
 
-def Logout(request):
+def logout(request):
 
     return render(request, "GestionAcademicaWebApp/logout.html")
 
-def Registro(request):
+def registro(request):
 
     return render(request, "GestionAcademicaWebApp/registro.html")
 
