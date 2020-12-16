@@ -5,48 +5,23 @@
 {% load static %}
 
 {% block content %}
-
+ 
+<title> {% block title  %} Egresados {% endblock title %} </title>
 <html>
 
 <head>
-
+    {% if user.is_authenticated %}
+        <h4 class= "text-center" style="background-color: brown; text-align: right;">  
+            {{user.username}}
+        <a href="{% url 'logout' %}">Cerrar Sesion</a>
+        </h4>
+    {% endif %}
 </head>
 
 
 <body>
-
-    
-    <!-- LOGIN -->
-    <div class="card">
-
-        <h3 class="card-header info-color white-text text-center py-4" style="background-color:rgb(89, 142, 240);">
-            <strong>Bienvenido</strong>
-        </h3>
-        <!--Card content-->
-        <div class="card-body px-lg-5">
-            <!-- Formulario -->
-
-            <form class="text-center" style="font:bolder;" method="POST" action=""> {% csrf_token %}
-
-                <h5>
-                    <p><strong>Inicia sesión para actualizar tu informacion de estudios.</strong></p>
-                </h5>
-                <p><a> <strong>Ingresa tus datos</strong></a></p>
-                <!-- E-mail -->
-                <div class="md-form">
-                    {{ formL }}
-
-                </div>
-               
-
-                <!-- boton inicar sesion -->
-                <button class="btn btn-dark writebtn my-4" type="submit">Inicia sesión</button>
-
-            </form>
-            <!-- Form -->
-        </div>
-    </div>
-    
+  
+    {% if user.is_authenticated == True %}
     <div class="card cards3" style="width: 55%;">
 
         <h3 class="card-header info-color white-text text-center py-4" style="background-color:rgb(15, 103, 235);">
@@ -57,7 +32,7 @@
             <!-- Formulario -->
             <form style="font:bolder ;" method="POST" action="">
                 {% csrf_token %}
-
+    
                 <h4 style="text-align: center;">
                     <p><strong>Si eres recien egresado, ingresa aqui tu información.</strong></p>
                 </h4>
@@ -65,7 +40,7 @@
                 <!-- Form inputs -->
                 <div class="md-form" style="display: grid;">
                     {{FormEg}}
-
+    
                 </div>
                 <!-- boton registrar -->
                 <button type="submit" class="btn btn-secondary btn-dark btn-lg">Registrar</button>
@@ -74,7 +49,10 @@
         </div>
     </div>
     </div>
-  
+    
+     
+    
+     
 
 
 
@@ -96,4 +74,4 @@
 </html>
 
 
-{% endblock %}
+{% endblock content %}

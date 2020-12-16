@@ -20,8 +20,11 @@ from django.contrib.auth.decorators import login_required
 
 
 urlpatterns = [
+    path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     path('', include('GestionAcademicaWebApp.urls')),
-    path('egresados', include('Egresados.urls')),
+    path('', include(('Egresados.urls', 'Egresados'))),
+    
+    #path('egresados', include('Egresados.urls')),
     
 ]

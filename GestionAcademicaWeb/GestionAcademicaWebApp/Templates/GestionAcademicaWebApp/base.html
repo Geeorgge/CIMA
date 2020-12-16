@@ -1,9 +1,10 @@
 <html>
+  
+ 
+  
 {% load static %}
 <head>
-       
-        
- 
+      
         
 
     <!-- Bootstrap -->
@@ -53,7 +54,7 @@
               </ul>
                 
                 <a href="{% url 'home' %}"> 
-                    <h4><span class="dark" aria-hidden="true" style="color: antiquewhite;">{{user.username}} </span></h4>
+                    <h4><span class="dark" aria-hidden="true" style="color: antiquewhite;">{{CustomUsuarios.username}} </span></h4>
                 </a>
               <p> 
                 
@@ -81,7 +82,7 @@
     <!-- CONTENIDO QUE CAMBIA-->
      
       {% block content %}
-
+            
       {% endblock %}
 
      

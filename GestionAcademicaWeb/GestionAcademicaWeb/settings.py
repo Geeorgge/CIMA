@@ -10,8 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-from pathlib import Path
+import os
+from pathlib import Path 
 from django.urls import reverse_lazy
+ 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,6 +30,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+APPEND_SLASH = False
+
+
 #AUTH_USER_MODEL = 'Egresados.Usuarios'
 
 # Application definition
@@ -39,8 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #MIS APPS
     'GestionAcademicaWebApp',
     'Egresados',
+    
+    
     
 ]
 
@@ -59,7 +67,7 @@ ROOT_URLCONF = 'GestionAcademicaWeb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,13 +85,7 @@ WSGI_APPLICATION = 'GestionAcademicaWeb.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-'''
-DATABASES = {
-    #'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}'''
+
 
 DATABASES = {
     'default': {
@@ -116,6 +118,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = "Egresados.CustomUsuarios"
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.AllowAllUsersModelBackend',
+    'Egresados.backends.CaseInsensitiveModelBackend'
+
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -138,4 +146,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = reverse_lazy('home')
+LOGIN_REDIRECT_UL = '/admin'
+
+LOGOUT_REDIRECT_URL = reverse_lazy('home')

@@ -1,9 +1,3 @@
-from django.test import TestCase 
-from django.core.wsgi import *
-from Egresados.models import *
-#import sys
-#sys.path.append('GestionAcademicaWeb/')
-# Create your tests here.
+from django.test import TestCase
 
-cueri = Usuarios.objects.all()
-print(cueri)
+# Create your tests here.

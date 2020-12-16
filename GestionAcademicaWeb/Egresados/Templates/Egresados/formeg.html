@@ -1,0 +1,38 @@
+{% extends "GestionAcademicaWebApp/base.html" %}
+
+
+
+{% load static %}
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+<div class="card cards3" style="width: 55%;">
+
+    <h3 class="card-header info-color white-text text-center py-4" style="background-color:rgb(15, 103, 235);">
+        <strong style="font-weight: bolder;">Registro</strong>
+    </h3>
+        <!--Card content-->
+    <div class="card-body cb px-lg-5">
+        <!-- Formulario -->
+        <form  style="font:bolder ;" method="POST"> 
+            {% csrf_token %} 
+                    
+            <h4 style="text-align: center;"><p><strong>Si eres recien egresado, ingresa aqui tu información.</strong></p></h4>
+            <p><a style="text-align: center;"> <strong>Ingresa tus datos</strong></a></p>
+            <!-- Form inputs -->
+            <div class="md-form" style="display: grid;">
+                {{FormEg}}
+            </div>
+            <!-- boton registrar --> 
+            <button type="submit" class="btn btn-secondary btn-dark btn-lg">Registrar</button> 
+            </form>
+            <!-- Form -->
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% endblock content %}
