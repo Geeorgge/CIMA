@@ -7,41 +7,51 @@
 
         {%  block content %}
         
+
+
+
           <div class="jumbotron">
                 <h1 class="display-4">Sistema integral de gestión académica del CIMA</h1>
                 <p class="lead">Actualiza tu informacion de estudios en los modulos del sistema</p>
               </div>
           
 
-          <body>
+          <body>    
+
+            
+
+            <!-- Recuadro para el Login -->
               <div class="card" style="left: 100px;">
 
                 <h3 class="card-header info-color white-text text-center py-4" style="background-color:rgb(44, 111, 236);">
-                    <strong>Bienvenido</strong>
+                    <strong>Iniciar Sesión</strong>
                 </h3>
                 <!--Card content-->
-                <div class="card-body px-lg-5">
-                    <!-- Formulario -->
-                    <form class="text-center"  style="font:bolder;" method="POST">                            
-                        <h5><p><strong>Inicia sesión para actualizar tu informacion de estudios.</strong></p></h5>
-                        <p><a> <strong>Ingresa tus datos</strong></a></p>
-                    </form>
-                    
+                <div class="card-body px-lg-5" style="text-align: center;">     
+                  <h4><p><strong>Inicia sesion sí ya eres parte del CIMA </strong></p></h4>             
+                    <h5><p><strong>Actualiza tu informacion de estudios aqui.</strong></p></h5>                       
+                    <p></p>
+                    <button class="btn btn-dark writebtn my-4" type="submit">
+                    <a href="{% url 'login' %}">Login</a>
+                    </button>
                 </div>
-            </div>
+             </div>
 
+            <!-- Recuadro para el registro -->
             <div class="card cards2" style="left: 810px;">
-
               <h3 class="card-header info-color white-text text-center py-4" style="background-color:rgb(44, 111, 236); right: 55;">
-                  <strong>Bienvenido</strong>
+                  <strong>Registros</strong>
               </h3>
               <!--Card content-->
-              <div class="card-body px-lg-5" style="text-align: center;">                  
-                     <h5><p><strong>Inicia sesión para actualizar tu informacion de estudios.</strong></p></h5>
-                      <p><a> <strong>Ingresa tus datos</strong></a></p>
-
+              <div class="card-body px-lg-5" style="text-align: center;">     
+                <h4><p><strong>Registro para nuevos usuarios del CIMA</strong></p></h4>             
+                <h5><p><strong>Ingresa tu informacion de estudios.</strong></p></h5>
+                <p></p>
+                <button class="btn btn-dark writebtn my-4" type="submit">
+                <a href="{% url 'registro' %}">Registro</a>
+                </button>
               </div>
-          </div>
+           </div>
         </body>
         {%  endblock %}
 

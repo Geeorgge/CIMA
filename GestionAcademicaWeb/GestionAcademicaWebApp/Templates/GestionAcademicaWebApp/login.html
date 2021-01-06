@@ -1,6 +1,70 @@
 {% extends "GestionAcademicaWebApp/base.html" %}
 
+{% load static %}
 
 {% block content %}
-<h1 style="background-color: aqua; text-align: center;" >Te has logueado :D</h1>
-{% endblock %}
+
+<html>
+<title> {% block title %} Login {% endblock title %} </title>
+    <head>
+         
+
+        
+    </head>
+    
+<body>
+
+<div class="loginss "  >
+       <div style="background-color:rgb(89, 142, 240);">
+            <h3 class="card-header info-color white-text text-center py-4" >
+                <strong>Bienvenido</strong>
+            </h3>
+        </div>
+        <!--Card content-->
+        <div class="card-body px-lg-5">
+            <!-- Formulario -->
+            <form class="text-center" style="font:bolder;" method="POST">{% csrf_token %}
+            <h5>
+                <p><strong> Inicia sesión para actualizar tu informacion de estudios. </strong></p>
+            </h5>
+            <p><a><strong> Ingresa tus datos </strong></a></p>
+            
+            {% for field in LoginForm %}
+                <p>
+                    {{field.label_tag}}
+                    {{field}}
+                </p>
+            {% endfor %} 
+            <button class="btn btn-dark writebtn my-4" type="submit">Iniciar sesión</button>
+            </form>
+        </div>
+     
+</div>
+
+<div> 
+    <p>
+        <p>
+
+        </p>
+     </p>
+ </div> 
+ 
+         
+   <div> 
+       <p>
+           <p>
+
+           </p>
+        </p>
+    </div>
+    
+</body>
+    
+    
+
+
+
+
+</html>
+
+{% endblock  %}

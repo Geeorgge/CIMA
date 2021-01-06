@@ -1,23 +1,26 @@
 from django.urls import path, include
-from django.contrib.auth.views import LoginView, LogoutView
+#from django.contrib.auth.views import LoginView, LogoutView
 from GestionAcademicaWebApp import views
 from django.contrib.auth.decorators import login_required
-from GestionAcademicaWebApp.views import inicio
+from GestionAcademicaWebApp.views import MyLoginView, Registro, Inicio
 
 urlpatterns = [
     
-    path('', inicio.as_view(), name="home"),
-    path('aspirantes/',views.aspirantes, name='aspirantes'),
-    path('contacto/',views.contacto, name='contacto'),
-    path('estudiantes/',views.estudiantes, name='estudiantes'),
-    #App egresados
+    path('',                 Inicio.as_view(),          name="home"),
+    path('aspirantes/',      views.aspirantes,          name='aspirantes'),
+    path('contacto/',        views.contacto,            name='contacto'),
+    #path('estudiantes/',     views.estudiantes,         name='estudiantes'),
+    path('investigadores/',  views.investigadores,      name='investigadores'),
+    path('registro/',        Registro.as_view(),        name="registro"),
+    path('login/',           MyLoginView.as_view(),     name="login"),
+    path('logout/',          views.logout,              name="logout"),
+
+    #App egresados urls
     path('egresados/', include('Egresados.urls')),
-    path('investigadores/',views.investigadores, name='investigadores'),
-    path('admins/',login_required(views.admins), name="admins"),
-    #path('login/', views.Login, name ="Login"),
-    #path('logout/', views.Logout, name ="Logout"),
-    path('registro/', views.registro, name="registro"),
-    #path('formeg/', views.FormEg, name="FormEg"),
+    #App Estudiantes urls
+    path('estudiantes/', include('Estudiantes.urls')),
+    path('admins/',    login_required(views.admins), name="admins"),
+      
 
       
 ]

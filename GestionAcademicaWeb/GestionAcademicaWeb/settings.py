@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 APPEND_SLASH = False
 
 
-#AUTH_USER_MODEL = 'Egresados.Usuarios'
+ 
 
 # Application definition
 
@@ -45,8 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #MIS APPS
-    'GestionAcademicaWebApp',
+    'GestionAcademicaWebApp', 
     'Egresados',
+    'Estudiantes',
     
     
     
@@ -118,10 +119,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = "Egresados.CustomUsuarios"
+AUTH_USER_MODEL = "GestionAcademicaWebApp.CustomUsuarios"
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.AllowAllUsersModelBackend',
-    'Egresados.backends.CaseInsensitiveModelBackend'
+    'GestionAcademicaWebApp.backends.CaseInsensitiveModelBackend',
 
 )
 
@@ -145,8 +146,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
+LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = reverse_lazy('home')
-LOGIN_REDIRECT_UL = '/admin'
-
 LOGOUT_REDIRECT_URL = reverse_lazy('home')

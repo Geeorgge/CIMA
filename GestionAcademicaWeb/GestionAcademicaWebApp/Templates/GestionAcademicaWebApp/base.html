@@ -1,11 +1,12 @@
 <html>
-  
+   
+        <title> {% block title  %} Inicio {% endblock title %} </title>
  
   
 {% load static %}
 <head>
       
-        
+ 
 
     <!-- Bootstrap -->
     <link href="{% static 'GestionAcademicaWebApp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -52,13 +53,21 @@
                     <a class="nav-link" href="{% url 'contacto' %}">Contacto<span class="sr-only">(current)</span></a>
                   </li>
               </ul>
-                
-                <a href="{% url 'home' %}"> 
-                    <h4><span class="dark" aria-hidden="true" style="color: antiquewhite;">{{CustomUsuarios.username}} </span></h4>
+                  
+               
+
+              
+                <a href="{% url 'home' %}" style="color: aliceblue;"> 
+                  {% if user.is_authenticated %}
+                  <h4 class= "text-center" >  
+                      {{user.nombre}}
+                  <a href="{% url 'logout' %}" style="color: red;">Cerrar Sesion</a>
+                  </h4>
+                {% endif %}
                 </a>
-              <p> 
-                
-              </p>
+                 
+               
+
               <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
@@ -160,6 +169,10 @@
     <!-- Bootstrap -->
     <script src="{% static 'GestionAcademicaWebApp/vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'GestionAcademicaWebApp/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <svg class="bi bi-chevron-right" width="32" height="32" viewBox="0 0 20 20" fill="currentColor" 
+    xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" 
+    d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z"/>
+    </svg>
 
 </body>
 

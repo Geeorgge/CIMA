@@ -1,61 +1,131 @@
-from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.contrib.auth.views import LoginView
+from django.contrib.messages.views import SuccessMessageMixin
+from GestionAcademicaWebApp.forms import FormRegistro, UserLogin
+from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import login, logout, authenticate
-from django.contrib import messages
+from django.contrib.auth import login, authenticate
+from django.contrib.auth import logout as djngo_logout
 from django.views.generic import View
+from django.views.generic.edit import FormView
+from django.urls import reverse_lazy
+
 
 
 # Create your views here.
 
 
-class inicio(View):
+class Inicio(View):
     def get(self, request, *args, **kwargs):
-
         return render(request, 'GestionAcademicaWebApp/home.html')
 
 
 def aspirantes(request):
-
-
     return render(request, "GestionAcademicaWebApp/aspirantes.html")
 
 
-
-
-
 def investigadores(request):
-
-
     return render(request, "GestionAcademicaWebApp/investigadores.html")
 
 
-def estudiantes(request):
-
-
-    return render(request, "GestionAcademicaWebApp/estudiantes.html")
+'''def estudiantes(request):
+    return render(request, "GestionAcademicaWebApp/estudiantes.html")'''
 
 
 def contacto(request):
-
-
     return render(request, "GestionAcademicaWebApp/contacto.html")
 
+
 def admins(request):
-
-
     return render(request, "GestionAcademicaWebApp/admins.html")
 
-def login(request):
 
-    return render(request, "GestionAcademicaWebApp/login.html")
+class MyLoginView(SuccessMessageMixin, LoginView):
+    
+    form_class      = UserLogin
+    template_name   = 'GestionAcademicaWebApp/login.html'
+    success_url     = 'home' 
+    success_message = f'Bienvenido a tu cuenta {User}'
+
+    def get_success_url(self) -> str:
+        return super().get_success_url()
+    
+    def get(self, request):
+        form = self.form_class()
+        return render(request, self.template_name, {'form':form})
+     
+    def post(self, request):
+        contxt = {}
+        if request.POST:
+            form = UserLogin(request.POST)
+            if form.is_valid():
+                 
+                email     = form.cleaned_data['email']
+                password  = form.cleaned_data['password']
+                user = authenticate(email=email, password=password)
+                if user is not None:
+                    if user.is_active:
+                        login(request, user)
+                        print("Has hecho login we")
+                        return redirect('home')
+                else:
+                    contxt['LoginForm'] = form
+            else:
+                form = UserLogin()
+                contxt['LoginForm'] = form    
+
+            return render(request, 'GestionAcademicaWebApp/login.html', contxt) 
 
 def logout(request):
+    djngo_logout(request)
+    return render(request, "GestionAcademicaWebApp/home.html")
+ 
 
-    return render(request, "GestionAcademicaWebApp/logout.html")
+class Registro(FormView):
+    template_name   = 'GestionAcademicaWebApp/registro.html'
+    form_class      = FormRegistro
+    success_url     = reverse_lazy('GestionAcademicaWebApp/home')
+    
+     
 
-def registro(request):
+    def get(self, request, *args, **kwargs):
+        form = FormRegistro()
+        return render(request,  'GestionAcademicaWebApp/registro.html', {'form':form})
 
-    return render(request, "GestionAcademicaWebApp/registro.html")
+    
+    
+    def post(self, request ):
+        contxt = {}
+        if request.POST:
+            form = FormRegistro(request.POST)
+            if form.is_valid():
+                
+                matricula    = form.cleaned_data['matricula']
+                nombre       = form.cleaned_data['nombre']
+                apellidos    = form.cleaned_data['apellidos']
+                email        = form.cleaned_data['email']
+                estatus      = form.cleaned_data['estatus']
+                
+                
+                user         = authenticate(matricula = matricula,  nombre  = nombre,
+                                            apellidos = apellidos,  email   = email, 
+                                            estatus   = estatus)
+                user = form.save()                            
+                login(self.request, user, backend='GestionAcademicaWebApp.backends.CaseInsensitiveModelBackend' )
+                print('usuario agregado bro')
+                return redirect('login')
+            else:               
+                contxt['RegistForm'] = form
+        else:
+            form = FormRegistro()
+            contxt['RegistForm'] = form    
+
+        return render(request,  'GestionAcademicaWebApp/registro.html', contxt)
+
+      
+
+ 
+
 
 
 

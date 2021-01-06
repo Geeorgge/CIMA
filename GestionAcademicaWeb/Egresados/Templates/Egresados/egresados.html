@@ -1,72 +1,37 @@
 {% extends "GestionAcademicaWebApp/base.html" %}
 
-
-
 {% load static %}
 
 {% block content %}
- 
-<title> {% block title  %} Egresados {% endblock title %} </title>
+
+
 <html>
+<title> {% block title %} Egresados {% endblock title %} </title>
 
 <head>
-    {% if user.is_authenticated %}
-        <h4 class= "text-center" style="background-color: brown; text-align: right;">  
-            {{user.username}}
-        <a href="{% url 'logout' %}">Cerrar Sesion</a>
-        </h4>
-    {% endif %}
+
 </head>
 
-
 <body>
-  
-    {% if user.is_authenticated == True %}
-    <div class="card cards3" style="width: 55%;">
 
-        <h3 class="card-header info-color white-text text-center py-4" style="background-color:rgb(15, 103, 235);">
-            <strong style="font-weight: bolder;">Registro</strong>
-        </h3>
-        <!--Card content-->
-        <div class="card-body cb px-lg-5">
-            <!-- Formulario -->
-            <form style="font:bolder ;" method="POST" action="">
-                {% csrf_token %}
     
-                <h4 style="text-align: center;">
-                    <p><strong>Si eres recien egresado, ingresa aqui tu información.</strong></p>
-                </h4>
-                <p><a style="text-align: center;"> <strong>Ingresa tus datos</strong></a></p>
-                <!-- Form inputs -->
-                <div class="md-form" style="display: grid;">
-                    {{FormEg}}
-    
-                </div>
-                <!-- boton registrar -->
-                <button type="submit" class="btn btn-secondary btn-dark btn-lg">Registrar</button>
-            </form>
-            <!-- Form -->
-        </div>
+
+
+    <div class="jumbotron2">
+        <h1 class="display-4">Hola Estudiante</h1>
+        <p class="lead" style="font-weight: bolder;">Inicia sesion si acabas de concluir tus estudios.</p>
+        {% if user.is_authenticated == False %}
+        <a href="{% url 'login' %}">
+            <button type="button" class="btn btn-dark " style="font-weight: bold;">Loguearse</button>
+        </a>
+        {% endif %}
+        <p>
+        <p class="lead" style="font-weight: bolder;">Ó llena la encuesta para actualizar tu estatus académico.</p>
+        <a href="{% url 'registro' %}">
+            <button type="button" class="btn btn-dark " style="font-weight: bold;">Encuesta</button>
+        </a>
+        </p>
     </div>
-    </div>
-    
-     
-    
-     
-
-
-
-    <div>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-
-    </div>
-
-
-
-    <!-- Material form subscription -->
 
 </body>
 
