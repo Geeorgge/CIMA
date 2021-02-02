@@ -5,58 +5,65 @@
 {% block content %}
 
  
-<title> {% block title %} Registro {% endblock title %} </title>
+    <title> {% block title %} Registro {% endblock title %} </title>
 
 
-        {% if messages %}
+    {% if messages %}
         <ul class="messages">
             {% for message in messages %}
-            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
-                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
-                {{ message }}
-            </li>
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                    {{ message }}
+                </li>
             {% endfor %}
         </ul>
-        {% endif %}
+    {% endif %}
 
 
- 
-    <div class="card cards3" style="width: 55%;">
-        <h3 class="card-header info-color white-text text-center py-4" style="background-color:rgb(15, 103, 235);">
-            <strong style="font-weight: bolder;">Registro</strong>
-        </h3>
-        <!--Card content-->
-        <div class="card-body cb px-lg-5">
-            <!-- Formulario -->
-            <h4 style="text-align: center;">
-                <p><strong>Registrate aqui para obtener tu cuenta.</strong></p>
-            </h4>
-            <p><a style="text-align: center;"> <strong>Ingresa tus datos</strong></a></p>
-            <!-- Form inputs -->
-            <form style="font:bolder ;" method="POST" >
-                {% csrf_token %}
-                 
-                {% for field in RegistForm %}
+    {% if user.is_authenticated %}
+    <center>
+            <div class="notification" style="height: 15%; width: 55%; ">
                 <p>
-                    {{field.label_tag}}
-                    {{field}}
-                    
-                    {% for error in field.errors %}
-                     <p style="color: red;">{{error}}</p> 
-                    {% endfor %}
-                     
+                    Cierra la sesion para agregar un usuario nuevo
                 </p>
-                {% endfor %}
-                <!-- boton registrar -->
-                <button type="submit" class="btn btn-secondary btn-dark btn-lg">Registrar</button>
-            </form>
-            <!-- Form -->
+            </div>
+    </center>
+    {% else %}
+    <center>
+        <div class="cards3">
+            <h3 class="card-header info-color white-text text-center py-4" style="background-color:rgb(15, 103, 235);">
+                <strong style="font-weight: bolder;">Registro</strong>
+            </h3>
+            <!--Card content-->
+            <div class="card-body2 px-lg-5">
+                <!-- Formulario -->
+                <h4 style="text-align: center;">
+                    <p><strong>Registrate aqui para obtener tu cuenta.</strong></p>
+                </h4>
+                <p><a style="text-align: center;"> <strong>Ingresa tus datos</strong></a></p>
+                <!-- Form inputs  p style="margin-left: -65%;">-->
+                <form style="font:bolder ;" method="POST" >
+                    {% csrf_token %}
+                    
+                    {% for field in form %}
+                    <p>
+                        <li style="margin-left: -65%;">{{field.label_tag}}</li>
+                        {{field}} 
+                        
+                        {% for error in field.errors %}
+                        <p style="color: red;">{{error}}</p> 
+                        {% endfor %}
+                        
+                    </p>
+                    {% endfor %}
+                    <!-- boton registrar -->
+                    <button type="submit" class="btn btn-secondary btn-dark btn-lg" style="margin-left: -25;">Registrar</button>
+                </form>
+                <!-- Form -->
+            </div>
         </div>
-    </div>
-
-
-   
- 
+    </center>
+    {% endif %} 
 
 
 

@@ -16,10 +16,11 @@ Including another URLconf
  
  
 from django.urls import path 
-from .views import   Egresados 
+from .views import   Egresados, Encuesta 
 
 
 urlpatterns = [
-    path('',           Egresados.as_view(),        name ="egresados"),
+    path('',           Egresados.as_view(),  name ="egresados"),
+    path('encuesta',   Encuesta.as_view(),   name="encuesta")
 
 ]

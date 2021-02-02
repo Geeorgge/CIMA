@@ -12,10 +12,12 @@ urlpatterns = [
     #path('estudiantes/',     views.estudiantes,         name='estudiantes'),
     path('investigadores/',  views.investigadores,      name='investigadores'),
     path('registro/',        Registro.as_view(),        name="registro"),
-    path('login/',           MyLoginView.as_view(),     name="login"),
+    path('login/',           MyLoginView.as_view(
+                                redirect_authenticated_user=True),      
+                                                        name="login"),
     path('logout/',          views.logout,              name="logout"),
 
-    #App egresados urls
+    #App egresados urls 
     path('egresados/', include('Egresados.urls')),
     #App Estudiantes urls
     path('estudiantes/', include('Estudiantes.urls')),

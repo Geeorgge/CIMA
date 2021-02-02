@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.forms.forms import Form
 from django.forms.models import ModelForm
+from django.forms.widgets import SelectMultiple
 from django.views.generic.edit import FormView
 from GestionAcademicaWebApp.models import CustomUsuarios
  
@@ -14,7 +15,7 @@ from .models import CustomUsuarios
 class UserLogin(ModelForm):
     class Meta:
         model = CustomUsuarios
-        #La variable "fields", ponemos los campos que tendra este form
+        #La variable "fields", ponemos los campos que tendra este formulario
         fields = ["email", "password"] 
         widgets = {
             'email'    : forms.EmailInput(      attrs = {'class': 'form-control',    
@@ -23,8 +24,6 @@ class UserLogin(ModelForm):
             'password' : forms.PasswordInput(   attrs = {'class':'form-control',
                                                     'placeholder': 'Contraseña...'}),
             }   
-
-     
          
     def clean(self):
         if self.is_valid():
@@ -33,18 +32,30 @@ class UserLogin(ModelForm):
             if not authenticate(email=email, password=password):
                 raise forms.ValidationError("Datos incorrectos")
 
+    def __init__(self, *args, **kwargs):
+        super(UserLogin, self).__init__(*args, **kwargs)
+
+        self.fields['email']    .label = ''
+        self.fields['password'].label = ''
+        
+
 
 #Formulario para registrar usuarios 
 class FormRegistro(UserCreationForm):
     class Meta:
         model = CustomUsuarios
-        fields = ['matricula','nombre','apellidos','email','estatus', 'password1','password2']
+        fields = [  'matricula','nombre','apellidos',
+                    'email','estatus', 'password1','password2'  ]
+         
+        
         widgets = {
-            'matricula'  : forms.NumberInput(attrs={'class': 'form-control'}),
-            'nombre'     : forms.TextInput(  attrs={'class': 'form-control'}),
-            'apellidos'  : forms.TextInput(  attrs={'class': 'form-control'}),
-            'email'      : forms.EmailInput( attrs={'class': 'form-control'}),
-            'estatus'    : forms.Select(     attrs={'class': 'form-control'}),
+            'matricula'  : forms.NumberInput(   attrs={'class': 'form-control'}),
+            'nombre'     : forms.TextInput(     attrs={'class': 'form-control'}),
+            'apellidos'  : forms.TextInput(     attrs={'class': 'form-control'}),
+            'email'      : forms.EmailInput(    attrs={'class': 'form-control'}),
+            'estatus'    : forms.Select(        attrs={'class': 'form-control'}),
+            
+
              
              }
              
@@ -52,22 +63,11 @@ class FormRegistro(UserCreationForm):
         super(FormRegistro, self).__init__(*args, **kwargs)
 
         self.fields['password1'].widget.attrs['class'] = 'form-control' 
-        self.fields['password2'].widget.attrs['class'] = 'form-control' 
-
-
-    '''def clean(self):
-        if self.is_valid():
-            matricula    = self.cleaned_data['matricula']
-            nombre       = self.cleaned_data['nombre']
-            apellidos    = self.cleaned_data['apellidos']
-            email        = self.cleaned_data['email']
-            estatus      = self.cleaned_data['estatus']
-            password1    = self.cleaned_data['password1']
-            password2    = self.cleaned_data['password2']
-            if not authenticate(matricula = matricula, nombre  = nombre,  apellidos = apellidos,
-                                email     = email,     estatus = estatus, password1 = password1,
-                                password2 = password2):
-                raise forms.ValidationError("Datos incorrectos")'''
+        self.fields['password1'].label = 'Contraseña'  
+        self.fields['password2'].widget.attrs['class'] = 'form-control'
+        self.fields['password2'].label = 'Confirmar contraseña' 
+        self.fields['email'].label = 'E-Mail'
+         
 
     def save(self, commit=True):
         user = super(FormRegistro, self).save(commit=False)

@@ -5,12 +5,322 @@
 {% block content %}
 
 
- 
+
 <title> {% block title %} Encuesta a egresados {% endblock title %} </title>
 
 
+<div class="jumbotron" style="background-color: rgb(43, 174, 226);">
+    <h1 class="display-4">Encuesta de satisfacción a egresados</h1>
+</div>
 
 
- 
+<div class="container">
+    <h3 class="card-header info-color white-text text-center py-4" style="background-color:rgb(85, 147, 240);">
+        <strong style="font-weight: bolder;">
+            <p>Los valores de las respuestas son:</p>
+            <p>1.- Insatisfactorio. 2.- Poco satisfactorio.</p>
+            <p>3.- Ni satisfactorio ni insatisfactorio. 4.- Satisfactorio.</p>
+            <p>5.- Muy satisfactorio. 0 = como opción para cuando el alumno desconoce el servicio.</p>
+        </strong>
+    </h3>
+</div>
+<p>
+<p></p>
+</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <!---ENCUESTA DE SERVICIOS GENERALES-->
+    <div class="container">
+        <h3 class="card-header info-color white-text text-center py-4" style="background-color:rgb(48, 122, 233);">
+            <strong style="font-weight: bolder;">
+                <li>Servicios generales.</li>
+            </strong>
+        </h3>
+    </div>
+    <div class="container">
+        <table class="table table-sm" style="background-color: rgb(105, 162, 236);">
+
+            <thead>
+                <tr>
+                    <th scope="col"> </th>
+                    <th>Actitud del personal.</th>
+                    <th>Condiciones ambientales (luz, ventilación, etc.).</th>
+                    <th>Condiciones del mobiliario.</th>
+                    <th>Condiciones de materiales y equipo.</th>
+                    <th>Horarios de atención.</th>
+                    <th>Calidad en el servicio.</th>
+                    <th>Medidas de seguridad.</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <th scope="row">Cafetería</th>
+
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">Servicio médico.</th>
+
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+
+                </tr>
+
+
+                <tr>
+                    <th scope="row">Biblioteca.</th>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">Centro de computo.</th>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">Salón de clases.</th>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+
+
+    <!---ENCUESTA DE SERVICIOS DE APOYO ACADEMICO-->
+    <div class="container">
+        <h3 class="card-header info-color white-text text-center py-4" style="background-color:rgb(48, 122, 233);">
+            <strong style="font-weight: bolder;">
+                <li>Servicios de apoyo académico.</li>
+            </strong>
+        </h3>
+    </div>
+    <div class="container">
+        <table class="table  table-sm" style="background-color: rgb(105, 162, 236);">
+            <thead>
+                <tr>
+                    <th scope="col"> </th>
+                    <th>Información sobre los servicios.</th>
+                    <th>Horarios de atención.</th>
+                    <th>Actitud del personal.</th>
+                    <th>Agilidad en los trámites.</th>
+                    <th>El servicio cumple con su función.</th>
+                    <th>Calidad en el servicio.</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <th scope="row">Tutorías.</th>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+
+
+                </tr>
+                <tr>
+                    <th scope="row">Director/Co-director de tesis.</th>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+
+                </tr>
+
+
+                <tr>
+                    <th scope="row">Comité tutorial.</th>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+
+                </tr>
+
+                <tr>
+                    <th scope="row">Servicios escolares.</th>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+
+                </tr>
+
+                <tr>
+                    <th scope="row">Servicios estudiantiles.</th>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+
+                </tr>
+
+                <tr>
+                    <th scope="row">Departamento académico.</th>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <!---ENCUESTA DE SERVICIOS DE APOYO INTEGRAL-->
+    <div class="container">
+        <h3 class="card-header info-color white-text text-center py-4" style="background-color:rgb(48, 122, 233);">
+            <strong style="font-weight: bolder;">
+                <li>Servicios de apoyo integral.</li>
+            </strong>
+        </h3>
+    </div>
+    <div class="container">
+        <table class="table  table-sm" style="background-color: rgb(105, 162, 236);">
+            <thead>
+                <tr>
+                    <th scope="col"> </th>
+                    <th>Competencia del instructor.</th>
+                    <th>Variedad de actividades.</th>
+                    <th>Actitud del personal.</th>
+                    <th>Horarios de atención.</th>
+                    <th>Calidad en el servicio.</th>
+                    <th>Medidas de seguridad.</th>
+                    <th>Condiciones ambientales (luz, ventilación, etc.).</th>
+                    <th>Condiciones del mobiliario.</th>
+                    <th>Condiciones de materiales y equipo.</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <th scope="row">Talleres culturales y artísticos.</th>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+
+                </tr>
+                <tr>
+                    <th scope="row">Deportes.</th>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                </tr>
+
+
+                <tr>
+                    <th scope="row">Idiomas.</th>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">Seminarios.</th>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">Congresos/ conferencias.</th>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                    <td>{{form.as_p}}</td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit" class="btn btn-primary  btn-lg ">Enviar</button>
+</form>
+
+
+
+
+
 
 {% endblock content %}

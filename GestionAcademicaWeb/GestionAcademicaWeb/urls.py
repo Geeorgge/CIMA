@@ -25,7 +25,5 @@ urlpatterns = [
     path('', include('GestionAcademicaWebApp.urls')),
     path('', include(('Egresados.urls', 'Egresados'))),
     path('', include(('Estudiantes.urls', 'Estudiantes'))),
-    
-     
-    
+
 ]

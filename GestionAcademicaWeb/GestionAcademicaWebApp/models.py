@@ -51,10 +51,12 @@ class CustomUsuarios(AbstractBaseUser):
     is_staff      = models.BooleanField(    default=False)
     is_superuser  = models.BooleanField(    default=False)
     profile_image = models.ImageField(      upload_to=get_profile_image_filepath,
-                                            null=True, blank=True, default=get_default_profile_image)
+                                            null=True, blank=True, 
+                                            default=get_default_profile_image)
     hide_email = models.BooleanField(       default=True)
-    estatus1 = [('1', 'Aspirante'),    ('2', 'Estudiante'), ('3', 'Egresado'), ('4', 'Administrativos'),
-                ('5', 'Investigador'), ('6', 'Administrador')]
+    estatus1 = [    ('1', 'Aspirante'),    ('2', 'Estudiante'), 
+                    ('3', 'Egresado'),     ('4', 'Administrativos'),
+                    ('5', 'Investigador'), ('6', 'Administrador')      ]
     estatus     = models.CharField(         max_length=20, choices=estatus1, default='Estudiante')
 
     objects = UsuariosManager()

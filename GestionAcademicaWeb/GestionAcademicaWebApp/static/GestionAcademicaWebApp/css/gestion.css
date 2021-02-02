@@ -21,6 +21,15 @@ body {
   color: #000c0a;
   font-family: sans-Century Gothic,CenturyGothic,AppleGothic,sans-serif !important;
 }
+
+.container2{
+  font-size: 25px;
+  height: 150%;
+  width: 90%;
+  right: 25%;
+  color: #000c0a;
+  font-family: sans-Century Gothic,CenturyGothic,AppleGothic,sans-serif !important;
+}
  
 
 .page-footer{
@@ -57,6 +66,7 @@ JUMBOTRON VERDE CON BORDES
   width: 95%;
   position: relative;
   left: 1cm;
+  top: 1%;
 }
 
 .jumbotron2{
@@ -100,17 +110,48 @@ JUMBOTRON VERDE CON BORDES
   top: 9%;
   left: 17%;
 }
-
-.loginss{
+.encuestacont{
+  background-color: #0497d1;
+  width:65%;
    
-  background-color: #0076a5;
-  width: 45%;
-  right: 60cm !important;
- 
-   
+  align-self: center;
+  height: 15cm;
 }
 
+.table{
+  height: 100px;
+}
 
+.table-bordered{
+  tab-size: 5cm;
+}
+
+ 
+
+.logins{
+  background-color:  rgb(89, 142, 240);
+  width: 45%;
+  
+}
+
+.container3{
+  color: #000;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  align-items: center;
+}
+
+.card-bodys{
+  background-color: #0076a5;
+  width: 45%;
+  height: 50%; 
+   
+}
+ 
+ 
+
+ 
 .card{
   
   background-color: #0076a5;
@@ -121,6 +162,8 @@ JUMBOTRON VERDE CON BORDES
   right: 35%;
    
 }
+
+ 
 
  
 
@@ -139,17 +182,21 @@ JUMBOTRON VERDE CON BORDES
 
 .cards3{
   font-size: 150%;
-  left: 22%;
-  align-items: stretch;
   background-color: #5ccefc;
   font-weight: bolder;
-  top: 4%;
-  height: 210%;
+  right: 250%;
+  height: 155%;
+  width: 50%;
+  margin-top: 2%;
+  margin-block-end: 5%;
   
 }
 
+.encuesta{
+  width: 80%;
+  height: 90%;
+}
  
-
 .carousel{
   background-color: transparent;
   size: 50cm;

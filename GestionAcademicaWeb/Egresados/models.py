@@ -3,6 +3,29 @@ from django.db.models.fields.related import ManyToManyField
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
+
+
+class Pregunta(models.Model):
+    question_text   = models.CharField(max_length=200)
+    pub_date        = models.DateTimeField('date published')
+    
+       
+    def __str__(self):
+        return self.question_text
+
+class Opcion(models.Model):
+    question        = models.ForeignKey(Pregunta, on_delete=models.CASCADE)
+    choice_text     = models.CharField(max_length=200)
+    votes           = models.IntegerField(default=0)
+    opciones1       =  [    ('0', '0'), ('1','1'), 
+                            ('2', '2'), ('3','3'), 
+                            ('4', '4'), ('5','5'),  ]
+    opciones        = models.CharField(max_length=20, default= '5', choices=opciones1)
+
+    def __str__(self):
+        return self.choice_text
+
+
 class UsuariosManager(BaseUserManager):
 
     def create_user(self, email, nombre, password=None):
@@ -40,22 +63,26 @@ def get_default_profile_image():
 
 
 class CustomUsuarios(AbstractBaseUser):
-    email         = models.EmailField(verbose_name='E-mail',
+    email           = models.EmailField(verbose_name='E-mail',
                                       max_length=50, blank=False, unique=True)
-    matricula     = models.IntegerField(verbose_name='Matricula', unique=True, null=True)
-    nombre        = models.CharField(max_length=65, unique=True)
-    apellidos     = models.CharField(max_length=60, blank=False)
-    date_joined   = models.DateTimeField(verbose_name="Date joined", auto_now_add=True)
-    is_admin      = models.BooleanField(default=False)
-    is_active     = models.BooleanField(default=True)
-    is_staff      = models.BooleanField(default=False)
-    is_superuser  = models.BooleanField(default=False)
-    profile_image = models.ImageField(upload_to=get_profile_image_filepath,
+    matricula       = models.IntegerField(verbose_name='Matricula', 
+                                            unique=True, null=True)
+    nombre          = models.CharField(max_length=65, unique=True)
+    apellidos       = models.CharField(max_length=60, blank=False)
+    date_joined     = models.DateTimeField(verbose_name="Date joined", 
+                                            auto_now_add=True)
+    is_admin        = models.BooleanField(default=False)
+    is_active       = models.BooleanField(default=True)
+    is_staff        = models.BooleanField(default=False)
+    is_superuser    = models.BooleanField(default=False)
+    profile_image   = models.ImageField(upload_to=get_profile_image_filepath,
                                       null=True, blank=True, default=get_default_profile_image)
-    hide_email = models.BooleanField(default=True)
-    estatus1 = [('1', 'Aspirante'),    ('2', 'Estudiante'), ('3', 'Egresado'), ('4', 'Administrativos'),
-                ('5', 'Investigador'), ('6', 'Administrador')]
-    estatus     = models.CharField(max_length=20, choices=estatus1, default='Estudiante')
+    hide_email      = models.BooleanField(default=True)
+    estatus1        = [ ('1', 'Aspirante'),     ('2', 'Estudiante'), 
+                        ('3', 'Egresado'),      ('4', 'Administrativos'),
+                        ('5', 'Investigador'),  ('6', 'Administrador')  ] 
+    estatus         = models.CharField(max_length=20, 
+                                            choices=estatus1, default='Estudiante')
 
     objects = UsuariosManager()
 

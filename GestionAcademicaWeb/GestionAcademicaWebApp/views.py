@@ -9,6 +9,7 @@ from django.contrib.auth import logout as djngo_logout
 from django.views.generic import View
 from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
+ 
 
 
 
@@ -47,6 +48,7 @@ class MyLoginView(SuccessMessageMixin, LoginView):
     success_url     = 'home' 
     success_message = f'Bienvenido a tu cuenta {User}'
 
+
     def get_success_url(self) -> str:
         return super().get_success_url()
     
@@ -55,7 +57,7 @@ class MyLoginView(SuccessMessageMixin, LoginView):
         return render(request, self.template_name, {'form':form})
      
     def post(self, request):
-        contxt = {}
+        contxt = { }
         if request.POST:
             form = UserLogin(request.POST)
             if form.is_valid():
