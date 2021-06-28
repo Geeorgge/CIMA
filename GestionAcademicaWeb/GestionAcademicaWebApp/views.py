@@ -75,8 +75,8 @@ def logout(request): #Funcion para cerrar sesion
     djngo_logout(request)
     return render(request, "GestionAcademicaWebApp/home.html")
  
-#Vista basada en clase para el registro de usuarios
-class Registro(FormView): 
+
+class Registro(FormView):
     template_name   = 'GestionAcademicaWebApp/registro.html'
     form_class      = FormRegistro
     success_url     = reverse_lazy('GestionAcademicaWebApp/home')
