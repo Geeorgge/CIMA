@@ -24,13 +24,12 @@
                         <p><strong> Inicia sesión para actualizar tu informacion de estudios. </strong></p>
                     </h5>
                     <p><a><strong> Ingresa tus datos </strong></a></p>
-
-                    {% for field in form %}
-                    <p>
-                        {{field.label_tag}}
-                        {{field}}
-                    </p>
-                    {% endfor %}
+                        {% for field in form %}
+                        <p>
+                            {{field.label_tag}}
+                            {{field}}
+                        </p>
+                        {% endfor %}
                     <button class="btn btn-dark writebtn my-4" type="submit">Iniciar sesión</button>
                 </form>
             </div>

@@ -4,6 +4,8 @@ from GestionAcademicaWebApp import views
 from django.contrib.auth.decorators import login_required
 from GestionAcademicaWebApp.views import MyLoginView, Registro, Inicio
 
+#URLS de la página 
+
 urlpatterns = [
     
     path('',                 Inicio.as_view(),          name="home"),
