@@ -11,36 +11,30 @@ from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
  
 
+ #          ****    Vistas basadas en clases    ****
 
-
-# Create your views here.
-
-
+#Despliega la pagina inicial de la web
 class Inicio(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'GestionAcademicaWebApp/home.html')
 
-
+#Despliega la pagina base del modulo de "Aspirantes"
 def aspirantes(request):
     return render(request, "GestionAcademicaWebApp/aspirantes.html")
 
-
+#Despliega la pagina base del modulo de "Investigadores"
 def investigadores(request):
     return render(request, "GestionAcademicaWebApp/investigadores.html")
-
-
-'''def estudiantes(request):
-    return render(request, "GestionAcademicaWebApp/estudiantes.html")'''
 
 
 def contacto(request):
     return render(request, "GestionAcademicaWebApp/contacto.html")
 
-
+#Despliega la pagina base del modulo de "Administrativos"
 def admins(request):
     return render(request, "GestionAcademicaWebApp/admins.html")
 
-
+#Vista basada en clase para el login de la página
 class MyLoginView(SuccessMessageMixin, LoginView):
     
     form_class      = UserLogin
@@ -53,10 +47,10 @@ class MyLoginView(SuccessMessageMixin, LoginView):
         return super().get_success_url()
     
     def get(self, request):
-        form = self.form_class()
+        form = UserLogin()
         return render(request, self.template_name, {'form':form})
      
-    def post(self, request):
+    def post(self, request): #Funcion que valída los datos insertados: "email", "password"
         contxt = { }
         if request.POST:
             form = UserLogin(request.POST)
@@ -68,7 +62,6 @@ class MyLoginView(SuccessMessageMixin, LoginView):
                 if user is not None:
                     if user.is_active:
                         login(request, user)
-                        print("Has hecho login we")
                         return redirect('home')
                 else:
                     contxt['LoginForm'] = form
@@ -78,7 +71,7 @@ class MyLoginView(SuccessMessageMixin, LoginView):
 
             return render(request, 'GestionAcademicaWebApp/login.html', contxt) 
 
-def logout(request):
+def logout(request): #Funcion para cerrar sesion
     djngo_logout(request)
     return render(request, "GestionAcademicaWebApp/home.html")
  
@@ -96,7 +89,7 @@ class Registro(FormView):
 
     
     
-    def post(self, request ):
+    def post(self, request ): #Funcion que valída todos los datos insertados
         contxt = {}
         if request.POST:
             form = FormRegistro(request.POST)
@@ -113,8 +106,6 @@ class Registro(FormView):
                                             apellidos = apellidos,  email   = email, 
                                             estatus   = estatus)
                 user = form.save()                            
-                login(self.request, user, backend='GestionAcademicaWebApp.backends.CaseInsensitiveModelBackend' )
-                print('usuario agregado bro')
                 return redirect('login')
             else:               
                 contxt['RegistForm'] = form
