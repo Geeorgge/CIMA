@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'easy_pdf',
     #MIS APPS
     'GestionAcademicaWebApp', 
     'Egresados',
@@ -93,7 +94,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'CIMA_DB',
         'USER': 'postgres',
-        'PASSWORD': 2526,
+        'PASSWORD': '123qwe',
         'HOST': 'localhost',
         'PORT': '5432'
     }

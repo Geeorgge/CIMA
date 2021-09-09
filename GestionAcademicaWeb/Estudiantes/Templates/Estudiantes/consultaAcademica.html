@@ -1,0 +1,59 @@
+{% extends "GestionAcademicaWebApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+<html>
+<title> {% block title %} Consulta Academica {% endblock title %} </title>
+
+<head>
+
+</head>
+
+<body>
+
+    
+
+
+    <div style="margin-left: 20%;background-color: skyblue;margin-right: 20%;text-align: center;">
+        <h1 class="display-4">Hola Estudiante</h1>
+        <p class="lead" style="font-weight: bolder;">Selecciona la consulta que quieres realizar</p>
+        <p class="lead" style="font-weight: bolder;">Consultar Kardex</p>
+        <a href="{% url 'venue_pdf' %}" target="_blank">
+            <button type="button" class="btn btn-dark " style="font-weight: bold;">Kardex</button>
+        </a>
+        <p class="lead" style="font-weight: bolder;">Consultar asistencias a estancias de investigación</p>
+        <a href="{% url 'reporte_asistencias_estancias' %}" target="_blank">
+            <button type="button" class="btn btn-dark " style="font-weight: bold;">Asistencia a estancias de investigacion</button>
+        </a>
+        <p class="lead" style="font-weight: bolder;">Consultar tus becas</p>
+        <a href="{% url 'reporte_becas' %}" target="_blank">
+            <button type="button" class="btn btn-dark " style="font-weight: bold;">Becas</button>
+        </a>
+        <p class="lead" style="font-weight: bolder;">Consultar tus datos generales</p>
+        <a href="{% url 'reporte_datos_generales' %}" target="_blank">
+            <button type="button" class="btn btn-dark " style="font-weight: bold;">Datos Generales</button>
+        </a>
+        <p class="lead" style="font-weight: bolder;">Consultar constancia de Inscripción</p>
+        <a href="{% url 'reporte_constancia_inscripcion' %}" target="_blank">
+            <button type="button" class="btn btn-dark " style="font-weight: bold;">Constancia de Inscripcion</button>
+        </a>
+        <p class="lead" style="font-weight: bolder;">Consultar puntajes de proceso de admisión</p>
+        <a href="{% url 'reporte_puntajes_proceso_inscripcion' %}" target="_blank">
+            <button type="button" class="btn btn-dark " style="font-weight: bold;">Puntajes proceso de admision</button>
+        </a>
+        <p class="lead" style="font-weight: bolder;">Consultar tus publicaciones</p>
+        <a href="#">
+            <button type="button" class="btn btn-dark " style="font-weight: bold;">Publicaciones</button>
+        </a>
+    </div>
+
+</body>
+
+
+</html>
+
+
+{% endblock content %}

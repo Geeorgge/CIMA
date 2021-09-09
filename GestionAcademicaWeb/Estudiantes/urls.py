@@ -19,7 +19,7 @@ from django.views.generic.edit import FormView
 from GestionAcademicaWebApp import urls
 #from django.contrib import admin
 from django.urls import path, include
-from .views import Estudiantes 
+from .views import consultaAcademica, Estudiantes,venue_pdf,reporte_asistencias_estancias,reporte_becas,reporte_datos_generales,reporte_constancia_inscripcion,reporte_puntajes_proceso_inscripcion
 from Egresados import views
 
 #from django.contrib.auth.views import views as_views 
@@ -27,5 +27,12 @@ from Egresados import views
 
 urlpatterns = [
     path('',   Estudiantes.as_view(),   name ="estudiantes"),
+    path('consultaAcademica',   consultaAcademica.as_view(),   name ="consultaAcademica"),
+    path('venue_pdf',venue_pdf,name='venue_pdf'),
+    path('reporte_asistencias_estancias',reporte_asistencias_estancias,name='reporte_asistencias_estancias'),
+    path('reporte_becas',reporte_becas,name='reporte_becas'),
+    path('reporte_datos_generales',reporte_datos_generales,name='reporte_datos_generales'),
+    path('reporte_constancia_inscripcion',reporte_constancia_inscripcion,name='reporte_constancia_inscripcion'),
+    path('reporte_puntajes_proceso_inscripcion',reporte_puntajes_proceso_inscripcion,name='reporte_puntajes_proceso_inscripcion')
     
 ]
