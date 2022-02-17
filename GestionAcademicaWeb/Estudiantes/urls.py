@@ -28,11 +28,11 @@ from Egresados import views
 urlpatterns = [
     path('',   Estudiantes.as_view(),   name ="estudiantes"),
     path('consultaAcademica',   consultaAcademica.as_view(),   name ="consultaAcademica"),
-    path('venue_pdf',venue_pdf,name='venue_pdf'),
-    path('reporte_asistencias_estancias',reporte_asistencias_estancias,name='reporte_asistencias_estancias'),
-    path('reporte_becas',reporte_becas,name='reporte_becas'),
-    path('reporte_datos_generales',reporte_datos_generales,name='reporte_datos_generales'),
-    path('reporte_constancia_inscripcion',reporte_constancia_inscripcion,name='reporte_constancia_inscripcion'),
-    path('reporte_puntajes_proceso_inscripcion',reporte_puntajes_proceso_inscripcion,name='reporte_puntajes_proceso_inscripcion')
+    path('venue_pdf',venue_pdf,name='venue_pdf'), #//////////////////////URL para imprimir el reporte de calificaciones///////////////////
+    path('reporte_asistencias_estancias',reporte_asistencias_estancias,name='reporte_asistencias_estancias'),#//////////////////////URL para imprimir el reporte de asistencias a estancias///////////////////
+    path('reporte_becas',reporte_becas,name='reporte_becas'),#//////////////////////URL para imprimir el reporte de becas///////////////////
+    path('reporte_datos_generales',reporte_datos_generales,name='reporte_datos_generales'),#//////////////////////URL para imprimir el reporte de datos generales///////////////////
+    path('reporte_constancia_inscripcion',reporte_constancia_inscripcion,name='reporte_constancia_inscripcion'),#//////////////////////URL para imprimir el reporte de constancia de inscripcion///////////////////
+    path('reporte_puntajes_proceso_inscripcion',reporte_puntajes_proceso_inscripcion,name='reporte_puntajes_proceso_inscripcion')#//////////////////////URL para imprimir el reporte de puntajes///////////////////
     
 ]

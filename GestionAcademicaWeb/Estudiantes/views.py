@@ -19,9 +19,14 @@ class Estudiantes(TemplateView):
 class consultaAcademica(TemplateView):
     template_name = 'Estudiantes/consultaAcademica.html'
     
+    
+#//////////////////////REPORTES///////////////////
+
+
+#/////////////////////FUNCION PARA IMPRIMIR ///////////////////
 def venue_pdf(request):
     buf=io.BytesIO()
-    c=canvas.Canvas(buf,pagesize=letter, bottomup=0)
+    c=canvas.Canvas(buf,pagesize=letter, bottomup=0) #SE DA FORMATO DE HOJA (TIPO CARTA, ETC)
     # textob=c.beginText()
     # textob.setTextOrigin(inch,inch)
     # textob.setFont("Helvetica",14)
@@ -32,15 +37,17 @@ def venue_pdf(request):
     
     # for line in lines:
     #     textob.textLine(line)
-        
+    
+    #////////FORMATO DE LETRA A TITULOS/////////////
     c.setFont("Helvetica",35)
     c.drawCentredString(280,50,"Kardex")
     c.setFont("Helvetica",16)
     c.drawCentredString(300,150,"Nombre del alumno: ")
     
+    #//////SE DEFINEN LOS ENCABEZADOS DE LAS COLUMNAS
     encabezados=('IdMateria','Nombre','Ordinario','Extraordinario')
-    detalles=[['123456','matematicas','90','0'],['123456','quimica','80','0'],['123456','programacion 1','90','0']]
-    detalle_orden=Table([encabezados]+detalles,colWidths=[150,100,100])
+    detalles=[['123456','matematicas','90','0'],['123456','quimica','80','0'],['123456','programacion 1','90','0']] #REEMPLAZAR ESTOS DATOS POR DATOS DEL MODELO DEL ESTUDIANTE
+    detalle_orden=Table([encabezados]+detalles,colWidths=[150,100,100]) # //// FORMATO A LAS COLUMNAS DEL REPORTE
     detalle_orden.setStyle(TableStyle([
         ('ALIGN',(0,0),(0,0),'CENTER'),
         ('GRID',(0,0),(-1,-1),1,colors.black),
@@ -50,6 +57,7 @@ def venue_pdf(request):
     detalle_orden.wrapOn(c,500,350)
     detalle_orden.drawOn(c,70,200)
     
+    #FORMATO A DATOS PERSONALES, FALTA AGREGAR ESE DATO DIRECTAMENTE DEL MODELO DEL ALUMNO
     c.setFont("Helvetica",18)
     c.drawCentredString(300,650,"Nombre facultad o escuela: ")
     
@@ -57,19 +65,20 @@ def venue_pdf(request):
     c.save()
     buf.seek(0)
     
-    return FileResponse(buf,as_attachment=True,filename='reporteKardex.pdf')
+    return FileResponse(buf,as_attachment=True,filename='reporteKardex.pdf') #////////SE IMPRIME EL REPORTE AL LLAMAR A LA VISTA
     
 def reporte_asistencias_estancias(request):
     buf=io.BytesIO()
     c=canvas.Canvas(buf,pagesize=letter, bottomup=0)
     
+    #////////FORMATO DE LETRA A TITULOS/////////////
     c.setFont("Helvetica",20)
     c.drawCentredString(300,60,"Registro de Asistencias a Estancias de Investigación")
     c.setFont("Helvetica",16)
     c.drawCentredString(300,150,"Nombre del alumno: ")
     
     
-    
+    #FORMATO A DATOS PERSONALES, FALTA AGREGAR ESE DATO DIRECTAMENTE DEL MODELO DEL ALUMNO
     c.setFont("Helvetica",18)
     c.drawCentredString(300,650,"Nombre facultad o escuela: ")
     
@@ -77,12 +86,13 @@ def reporte_asistencias_estancias(request):
     c.save()
     buf.seek(0)
     
-    return FileResponse(buf,as_attachment=True,filename='reporteAsistenciasEstancias.pdf')
+    return FileResponse(buf,as_attachment=True,filename='reporteAsistenciasEstancias.pdf')#////////SE IMPRIME EL REPORTE AL LLAMAR A LA VISTA
     
 def reporte_becas(request):
     buf=io.BytesIO()
     c=canvas.Canvas(buf,pagesize=letter, bottomup=0)
     
+    #////////FORMATO DE LETRA A TITULOS/////////////
     c.setFont("Helvetica",20)
     c.drawCentredString(300,60,"Historial de Registro de Becas")
     c.setFont("Helvetica",16)
@@ -97,12 +107,13 @@ def reporte_becas(request):
     c.save()
     buf.seek(0)
     
-    return FileResponse(buf,as_attachment=True,filename='reporteBecas.pdf')
+    return FileResponse(buf,as_attachment=True,filename='reporteBecas.pdf')#////////SE IMPRIME EL REPORTE AL LLAMAR A LA VISTA
 
 def reporte_datos_generales(request):
     buf=io.BytesIO()
     c=canvas.Canvas(buf,pagesize=letter, bottomup=0)
     
+    #////////FORMATO DE LETRA A TITULOS/////////////
     c.setFont("Helvetica",20)
     c.drawCentredString(300,60,"Datos Generales del Alumno")
     c.setFont("Helvetica",16)
@@ -124,7 +135,7 @@ def reporte_datos_generales(request):
     c.save()
     buf.seek(0)
     
-    return FileResponse(buf,as_attachment=True,filename='reporteDatosGenerales.pdf')
+    return FileResponse(buf,as_attachment=True,filename='reporteDatosGenerales.pdf')#////////SE IMPRIME EL REPORTE AL LLAMAR A LA VISTA
 
 def reporte_constancia_inscripcion(request):
     buf=io.BytesIO()
@@ -140,12 +151,13 @@ def reporte_constancia_inscripcion(request):
     c.save()
     buf.seek(0)
     
-    return FileResponse(buf,as_attachment=True,filename='reporteConstanciaInscripcion.pdf')
+    return FileResponse(buf,as_attachment=True,filename='reporteConstanciaInscripcion.pdf')#////////SE IMPRIME EL REPORTE AL LLAMAR A LA VISTA
 
 def reporte_puntajes_proceso_inscripcion(request):
     buf=io.BytesIO()
     c=canvas.Canvas(buf,pagesize=letter, bottomup=0)
     
+    #////////FORMATO DE LETRA A TITULOS/////////////
     c.setFont("Helvetica",20)
     c.drawCentredString(300,60,"Reporte de Puntajes de Proceso de Inscripción")
     c.setFont("Helvetica",16)
@@ -156,4 +168,4 @@ def reporte_puntajes_proceso_inscripcion(request):
     c.save()
     buf.seek(0)
     
-    return FileResponse(buf,as_attachment=True,filename='reportePuntajesInscripcion.pdf')
+    return FileResponse(buf,as_attachment=True,filename='reportePuntajesInscripcion.pdf')#////////SE IMPRIME EL REPORTE AL LLAMAR A LA VISTA
